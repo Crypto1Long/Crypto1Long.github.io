@@ -1,0 +1,11 @@
+/* 日间模式背景 */
+body {
+  background: url('/images/hjsec.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* 夜间模式背景 */
+[data-theme="dark"] body {
+  background: url('/images/hjsec.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
