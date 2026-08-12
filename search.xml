@@ -4,11 +4,32 @@
   
     
     <entry>
+      <title>七星张学长的学习路径分享</title>
+      <link href="/2026/08/12/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/%E5%BC%A0%E5%AD%A6%E9%95%BF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84%E5%88%86%E4%BA%AB/"/>
+      <url>/2026/08/12/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/%E5%BC%A0%E5%AD%A6%E9%95%BF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84%E5%88%86%E4%BA%AB/</url>
+      
+        <content type="html"><![CDATA[<p>这是22级桂电七星瓢虫工作坊学长分享的逆向学习路径</p><p><img src="/img/posts/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/2959d266baf2fd630fd4f17dc36d7a9c.webp"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 逆向 </tag>
+            
+            <tag> 基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>注册表学习</title>
       <link href="/2026/08/10/%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%AD%A6%E4%B9%A0/%E6%B3%A8%E5%86%8C%E8%A1%A8%E7%9A%84%E5%AD%A6%E4%B9%A0/"/>
       <url>/2026/08/10/%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%AD%A6%E4%B9%A0/%E6%B3%A8%E5%86%8C%E8%A1%A8%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
       
-        <content type="html"><![CDATA[<blockquote><p>是一个<strong>数据库</strong>，存储windows系统中配置的信息<br>关于注册表学习有关连接<a href="https://learn.microsoft.com/zh-cn/windows/win32/api/winreg/">https://learn.microsoft.com/zh-cn/windows/win32/api/winreg/</a></p></blockquote><h2 id="任务要求"><a href="#任务要求" class="headerlink" title="任务要求"></a>任务要求</h2><blockquote><p>通过注册表关键点位，获取当前系统相关信息</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>注册表是一个<strong>数据库</strong>，存储windows系统中配置的信息<br>关于注册表学习有关连接<a href="https://learn.microsoft.com/zh-cn/windows/win32/api/winreg/">https://learn.microsoft.com/zh-cn/windows/win32/api/winreg/</a></p></blockquote><h2 id="任务要求"><a href="#任务要求" class="headerlink" title="任务要求"></a>任务要求</h2><blockquote><p>通过注册表关键点位，获取当前系统相关信息</p></blockquote><p>要求：</p><ol><li><p>搜索相关路径，获取当前系统安装的所有软件信息（安全软件，工具件，办公软件需要标注）</p></li><li><p>枚举自启动项，把自启动exe路径全部列出来</p></li><li><p>枚举系统所有的服务项，并把服务相关的可执行程序全部枚举出来</p></li><li><p>枚举系统处理器信息</p></li><li><p>枚举出文件扩展名关联的程序</p></li><li><p>枚举出系统的环境变量</p></li><li><p>枚举系统TCP&#x2F;IP设置</p></li><li><p>枚举系统的时区和区域设置</p></li></ol><h2 id="注册表的基本结构："><a href="#注册表的基本结构：" class="headerlink" title="注册表的基本结构："></a>注册表的基本结构：</h2><h3 id="根键：以HKEY开头"><a href="#根键：以HKEY开头" class="headerlink" title="根键：以HKEY开头"></a>根键：以HKEY开头</h3><p><img src="/img/posts/%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%AD%A6%E4%B9%A0/Pasted%20image%2020260812171503.webp"></p><h3 id="键与子键：键的访问权限可以控制（只读-写入）"><a href="#键与子键：键的访问权限可以控制（只读-写入）" class="headerlink" title="键与子键：键的访问权限可以控制（只读&#x2F;写入）"></a>键与子键：键的访问权限可以控制（只读&#x2F;写入）</h3><p><img src="/img/posts/%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%AD%A6%E4%B9%A0/Pasted%20image%2020260812171452.webp"></p><h3 id="值-名称、类型、数据"><a href="#值-名称、类型、数据" class="headerlink" title="值:名称、类型、数据"></a>值:名称、类型、数据</h3><p>名称：字符串标识</p><p>类型：指示数据类型</p><p>数据：实际存储的二进制内容</p><p><img src="/img/posts/%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%AD%A6%E4%B9%A0/Pasted%20image%2020260812171516.webp"></p><h2 id="任务一"><a href="#任务一" class="headerlink" title="任务一"></a>任务一</h2><blockquote><p>搜索相关路径，获取当前系统安装的所有软件信息（安全软件，工具件，办公软件需要标注）</p></blockquote><h2 id="任务二"><a href="#任务二" class="headerlink" title="任务二"></a>任务二</h2><blockquote><p>枚举自启动项，把自启动exe路径全部列出来</p></blockquote><h2 id="任务三"><a href="#任务三" class="headerlink" title="任务三"></a>任务三</h2><blockquote><p>枚举系统所有的服务项，并把服务相关的可执行程序全部枚举出来</p></blockquote><h2 id="任务四"><a href="#任务四" class="headerlink" title="任务四"></a>任务四</h2><blockquote><p>枚举系统处理器信息</p></blockquote><h2 id="任务五"><a href="#任务五" class="headerlink" title="任务五"></a>任务五</h2><blockquote><p>枚举出文件扩展名关联的程序</p></blockquote><h2 id="任务六"><a href="#任务六" class="headerlink" title="任务六"></a>任务六</h2><blockquote><p>枚举出系统的环境变量</p></blockquote><h2 id="任务七"><a href="#任务七" class="headerlink" title="任务七"></a>任务七</h2><blockquote><p>枚举系统TCP&#x2F;IP设置</p></blockquote><h2 id="任务八"><a href="#任务八" class="headerlink" title="任务八"></a>任务八</h2><blockquote><p>枚举系统的时区和区域设置</p></blockquote>]]></content>
       
       
       
